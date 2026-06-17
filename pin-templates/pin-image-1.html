@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pin Template</title>
+<style>
+body {
+  margin: 0; padding: 0;
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh; background: #e0e0e0;
+}
+.pin {
+  width: 1000px; height: 1500px;
+  background: linear-gradient(160deg, #2D5016 0%, #3A7D1A 40%, #5A9A3A 100%);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  position: relative; overflow: hidden;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.pin::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 500px; height: 500px; background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.pin::after {
+  content: '⛺'; position: absolute; bottom: 80px; right: 60px;
+  font-size: 200px; opacity: 0.12;
+}
+.badge {
+  background: #F48120; color: #fff; padding: 14px 40px; border-radius: 100px;
+  font-size: 28px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 50px; z-index: 1;
+}
+.title {
+  color: #fff; font-size: 72px; font-weight: 900; text-align: center;
+  line-height: 1.15; max-width: 800px; z-index: 1; letter-spacing: -1px;
+}
+.subtitle {
+  color: rgba(255,255,255,0.85); font-size: 34px; margin-top: 35px;
+  text-align: center; z-index: 1; font-weight: 300;
+}
+.logo {
+  position: absolute; bottom: 60px; left: 60px;
+  color: rgba(255,255,255,0.7); font-size: 30px; font-weight: 700; z-index: 1;
+}
+</style>
+</head>
+<body>
+<div class="pin">
+  <div class="badge">2025 BUYING GUIDE</div>
+  <div class="title">Best Camping Tents<br>We Tested 12</div>
+  <div class="subtitle">From $50 budget to $800 expedition ⛺</div>
+  <div class="logo">Trailhead Gear</div>
+</div>
+</body>
+</html>
