@@ -114,12 +114,24 @@ h3 { font-size: 1.25rem; font-weight: 600; }
   background: var(--white); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 28px; margin-bottom: 24px;
   display: grid; grid-template-columns: 200px 1fr auto; gap: 24px;
-  align-items: start;
+  align-items: start; transition: box-shadow 0.2s;
+}
+.product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.product-card.winner-card {
+  border: 2px solid #F5A623; box-shadow: 0 4px 20px rgba(245,166,35,0.15);
+  position: relative;
+}
+.product-card.winner-card::after {
+  content: '🏆 Our Top Pick'; position: absolute; top: -14px; left: 28px;
+  background: #F5A623; color: #fff; padding: 4px 16px; border-radius: 100px;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px;
 }
 .product-rank {
   font-size: 4rem; font-weight: 900; color: var(--green-light);
   line-height: 1; text-align: center; align-self: center;
 }
+/* Compact product card variant (for short lists like chairs/headlamps) */
+.product-card-short .product-rank { font-size: 2.5rem; }
 .product-info h3 { margin-bottom: 4px; }
 .product-info .price { color: var(--green-dark); font-weight: 700; font-size: 1.15rem; margin: 6px 0; }
 .product-info .rating { color: var(--star); font-size: 1rem; margin-bottom: 8px; }
@@ -138,19 +150,22 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 .pros-cons li::before { content: ''; }
 
 .btn-buy {
-  display: inline-block; background: var(--orange); color: #fff;
-  padding: 12px 28px; border-radius: 6px; font-weight: 700;
+  display: inline-block; background: #FFD814; color: #0F1111;
+  padding: 12px 28px; border-radius: 20px; font-weight: 700;
   font-size: 1rem; text-align: center; white-space: nowrap;
-  transition: background 0.2s; align-self: center;
+  transition: all 0.2s; align-self: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #FCD200;
 }
-.btn-buy:hover { background: var(--orange-dark); text-decoration: none; color: #fff; }
+.btn-buy:hover { background: #F7CA00; text-decoration: none; color: #0F1111; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
 
 .btn-buy-sm {
-  display: inline-block; background: var(--green); color: #fff;
-  padding: 8px 18px; border-radius: 5px; font-weight: 600;
-  font-size: 0.9rem; transition: background 0.2s;
+  display: inline-block; background: #FFD814; color: #0F1111;
+  padding: 8px 18px; border-radius: 20px; font-weight: 600;
+  font-size: 0.9rem; transition: all 0.2s;
+  border: 1px solid #FCD200;
 }
-.btn-buy-sm:hover { background: var(--green-dark); text-decoration: none; color: #fff; }
+.btn-buy-sm:hover { background: #F7CA00; text-decoration: none; color: #0F1111; }
 
 /* --- Comparison Table --- */
 .comparison-table {
@@ -208,6 +223,24 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 .mt-40 { margin-top: 40px; }
 .mb-40 { margin-bottom: 40px; }
 
+/* --- Cross-sell Cards --- */
+.cross-sell-card {
+  flex: 1; min-width: 180px; max-width: 280px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+  text-align: center; text-decoration: none; color: var(--text);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cross-sell-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  text-decoration: none;
+  color: var(--text);
+}
+.cross-sell-row {
+  display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+  margin: 40px 0; padding: 0;
+}
+
 /* --- CTA Banner --- */
 .cta-banner {
   background: var(--green-light); border-radius: var(--radius);
@@ -228,6 +261,38 @@ h3 { font-size: 1.25rem; font-weight: 600; }
   .product-rank { text-align: left; font-size: 2rem; }
   .pros-cons { grid-template-columns: 1fr; }
   .category-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+
+/* --- Score Bars --- */
+.score-bar { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+.score-bar-label { width: 36px; font-size: 0.75rem; color: var(--text-light); flex-shrink: 0; }
+.score-bar-track { flex: 1; height: 5px; background: #e9e9e9; border-radius: 3px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+.score-bar-fill.high { background: var(--green); }
+.score-bar-fill.mid { background: var(--orange); }
+.score-bar-fill.low { background: var(--text-muted); }
+.score-bar-val { width: 26px; text-align: right; font-size: 0.8rem; font-weight: 700; color: var(--text); flex-shrink: 0; }
+
+/* --- Touch-friendly buttons --- */
+.btn-buy-sm { padding: 11px 20px; min-height: 44px; }
+
+/* --- 480px Mobile Breakpoint --- */
+@media (max-width: 480px) {
+  .product-card { padding: 18px; gap: 14px; }
+  .btn-buy { width: 100%; text-align: center; padding: 14px 20px; }
+  .category-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cat-card-img { height: 100px; font-size: 2rem; }
+  .cat-card-body { padding: 10px 12px; }
+  .cat-card-body h3 { font-size: 1rem; }
+  .page-header h1 { font-size: 1.5rem; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero p { font-size: 1rem; }
+  .pros-cons { grid-template-columns: 1fr; }
+  .comparison-table { font-size: 0.75rem; }
+  .comparison-table th, .comparison-table td { padding: 8px 10px; }
+  .product-rank { font-size: 2rem; }
+  .at-a-glance-table { font-size: 0.78rem; }
+  .at-a-glance-table th, .at-a-glance-table td { padding: 6px 8px; }
 }
 
 /* --- Print --- */
