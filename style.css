@@ -1,0 +1,301 @@
+/* ============================================
+   Trailhead Gear - Camping Gear Reviews
+   Design: Clean, Wirecutter-style, SEO-first
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark: #2D5016;
+  --green: #3A7D1A;
+  --green-light: #E8F3E0;
+  --orange: #F48120;
+  --orange-dark: #D46A10;
+  --text: #1a1a1a;
+  --text-light: #555;
+  --text-muted: #888;
+  --bg: #fafaf9;
+  --white: #fff;
+  --border: #e0e0d8;
+  --star: #f5a623;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --radius: 10px;
+  --max-width: 1100px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* --- Typography --- */
+h1, h2, h3, h4 { color: var(--text); line-height: 1.25; }
+h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.5px; }
+h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+/* --- Layout --- */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+/* --- Header / Nav --- */
+.site-header {
+  background: var(--white);
+  border-bottom: 2px solid var(--green-light);
+  position: sticky; top: 0; z-index: 100;
+}
+
+.navbar {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: var(--max-width); margin: 0 auto; padding: 14px 20px;
+}
+
+.logo {
+  font-size: 1.5rem; font-weight: 800; color: var(--green-dark); letter-spacing: -0.5px;
+}
+
+.nav-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+.nav-links a { color: var(--text); font-weight: 500; font-size: 0.95rem; }
+.nav-links a:hover { color: var(--green); text-decoration: none; }
+
+.mobile-menu-btn { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; }
+
+/* --- Hero --- */
+.hero {
+  background: linear-gradient(135deg, #2D5016 0%, #3A7D1A 50%, #4A8D2A 100%);
+  color: #fff; padding: 70px 0 60px; text-align: center;
+}
+.hero h1 { color: #fff; font-size: 2.8rem; margin-bottom: 12px; }
+.hero p { font-size: 1.2rem; opacity: 0.9; max-width: 620px; margin: 0 auto; }
+
+/* --- Category Cards --- */
+.section-title { text-align: center; margin: 50px 0 30px; }
+
+.category-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px; margin-bottom: 50px;
+}
+
+.cat-card {
+  background: var(--white); border-radius: var(--radius);
+  overflow: hidden; border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.cat-card-img {
+  height: 160px; background-size: cover; background-position: center;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+}
+.cat-card-body { padding: 16px 18px 20px; }
+.cat-card-body h3 { margin-bottom: 4px; }
+.cat-card-body p { color: var(--text-light); font-size: 0.9rem; }
+
+/* --- Product Page Layout --- */
+.breadcrumb { padding: 16px 0; font-size: 0.85rem; color: var(--text-muted); }
+.breadcrumb a { color: var(--text-muted); }
+
+.page-header { padding: 0 0 30px; border-bottom: 1px solid var(--border); margin-bottom: 30px; }
+.page-header .meta { color: var(--text-muted); font-size: 0.9rem; margin-top: 6px; }
+.page-header .disclaimer { font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; background: var(--green-light); padding: 8px 14px; border-radius: 6px; display: inline-block; }
+
+/* --- Product Card --- */
+.product-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px; margin-bottom: 24px;
+  display: grid; grid-template-columns: 200px 1fr auto; gap: 24px;
+  align-items: start; transition: box-shadow 0.2s;
+}
+.product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.product-card.winner-card {
+  border: 2px solid #F5A623; box-shadow: 0 4px 20px rgba(245,166,35,0.15);
+  position: relative;
+}
+.product-card.winner-card::after {
+  content: '🏆 Our Top Pick'; position: absolute; top: -14px; left: 28px;
+  background: #F5A623; color: #fff; padding: 4px 16px; border-radius: 100px;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px;
+}
+.product-rank {
+  font-size: 4rem; font-weight: 900; color: var(--green-light);
+  line-height: 1; text-align: center; align-self: center;
+}
+/* Compact product card variant (for short lists like chairs/headlamps) */
+.product-card-short .product-rank { font-size: 2.5rem; }
+.product-info h3 { margin-bottom: 4px; }
+.product-info .price { color: var(--green-dark); font-weight: 700; font-size: 1.15rem; margin: 6px 0; }
+.product-info .rating { color: var(--star); font-size: 1rem; margin-bottom: 8px; }
+.product-info .specs { font-size: 0.85rem; color: var(--text-light); margin-bottom: 10px; }
+.product-info .specs span { margin-right: 12px; white-space: nowrap; }
+
+.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; font-size: 0.9rem; }
+.pros-cons .pros, .pros-cons .cons { padding: 12px; border-radius: 8px; }
+.pros-cons .pros { background: #f0f7eb; }
+.pros-cons .cons { background: #fef5f0; }
+.pros-cons h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.pros-cons h4.green { color: var(--green); }
+.pros-cons h4.orange { color: var(--orange); }
+.pros-cons ul { list-style: none; padding: 0; }
+.pros-cons li { font-size: 0.88rem; line-height: 1.5; }
+.pros-cons li::before { content: ''; }
+
+.btn-buy {
+  display: inline-block; background: #FFD814; color: #0F1111;
+  padding: 12px 28px; border-radius: 20px; font-weight: 700;
+  font-size: 1rem; text-align: center; white-space: nowrap;
+  transition: all 0.2s; align-self: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 1px solid #FCD200;
+}
+.btn-buy:hover { background: #F7CA00; text-decoration: none; color: #0F1111; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+
+.btn-buy-sm {
+  display: inline-block; background: #FFD814; color: #0F1111;
+  padding: 8px 18px; border-radius: 20px; font-weight: 600;
+  font-size: 0.9rem; transition: all 0.2s;
+  border: 1px solid #FCD200;
+}
+.btn-buy-sm:hover { background: #F7CA00; text-decoration: none; color: #0F1111; }
+
+/* --- Comparison Table --- */
+.comparison-table {
+  width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem;
+  background: var(--white); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.comparison-table th {
+  background: var(--green-dark); color: #fff; padding: 12px 14px;
+  text-align: left; font-weight: 600;
+}
+.comparison-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); }
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table tr:hover td { background: #f9faf7; }
+.comparison-table .winner { color: var(--green-dark); font-weight: 700; }
+
+/* --- Blog Post --- */
+.blog-content { max-width: 720px; margin: 0 auto; padding: 30px 0 60px; }
+.blog-content h2 { margin-top: 36px; margin-bottom: 14px; }
+.blog-content h3 { margin-top: 24px; margin-bottom: 10px; }
+.blog-content p { margin-bottom: 16px; }
+.blog-content ul, .blog-content ol { margin-left: 24px; margin-bottom: 16px; }
+.blog-content li { margin-bottom: 6px; }
+
+/* --- Sidebar (for blog) --- */
+.sidebar-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px; margin-bottom: 20px;
+}
+.sidebar-card h4 { margin-bottom: 10px; }
+
+/* --- Footer --- */
+.site-footer {
+  background: var(--green-dark); color: rgba(255,255,255,0.8);
+  padding: 40px 0 24px; margin-top: 60px;
+}
+.site-footer .footer-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px; max-width: var(--max-width); margin: 0 auto 30px; padding: 0 20px;
+}
+.site-footer h4 { color: #fff; margin-bottom: 12px; }
+.site-footer ul { list-style: none; }
+.site-footer li { margin-bottom: 6px; font-size: 0.9rem; }
+.site-footer a { color: rgba(255,255,255,0.7); }
+.site-footer a:hover { color: #fff; }
+.site-footer .footer-bottom {
+  text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 0.82rem; max-width: var(--max-width); margin: 0 auto; padding-left: 20px; padding-right: 20px;
+}
+
+/* --- Utility --- */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.mt-40 { margin-top: 40px; }
+.mb-40 { margin-bottom: 40px; }
+
+/* --- Cross-sell Cards --- */
+.cross-sell-card {
+  flex: 1; min-width: 180px; max-width: 280px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+  text-align: center; text-decoration: none; color: var(--text);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cross-sell-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  text-decoration: none;
+  color: var(--text);
+}
+.cross-sell-row {
+  display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+  margin: 40px 0; padding: 0;
+}
+
+/* --- CTA Banner --- */
+.cta-banner {
+  background: var(--green-light); border-radius: var(--radius);
+  padding: 30px; text-align: center; margin: 40px 0;
+}
+.cta-banner h3 { margin-bottom: 8px; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 40px 0; }
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--white); padding: 16px 20px; box-shadow: var(--shadow); }
+  .mobile-menu-btn { display: block; }
+  .product-card { grid-template-columns: 1fr; }
+  .product-rank { text-align: left; font-size: 2rem; }
+  .pros-cons { grid-template-columns: 1fr; }
+  .category-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+}
+
+/* --- Score Bars --- */
+.score-bar { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+.score-bar-label { width: 36px; font-size: 0.75rem; color: var(--text-light); flex-shrink: 0; }
+.score-bar-track { flex: 1; height: 5px; background: #e9e9e9; border-radius: 3px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+.score-bar-fill.high { background: var(--green); }
+.score-bar-fill.mid { background: var(--orange); }
+.score-bar-fill.low { background: var(--text-muted); }
+.score-bar-val { width: 26px; text-align: right; font-size: 0.8rem; font-weight: 700; color: var(--text); flex-shrink: 0; }
+
+/* --- Touch-friendly buttons --- */
+.btn-buy-sm { padding: 11px 20px; min-height: 44px; }
+
+/* --- 480px Mobile Breakpoint --- */
+@media (max-width: 480px) {
+  .product-card { padding: 18px; gap: 14px; }
+  .btn-buy { width: 100%; text-align: center; padding: 14px 20px; }
+  .category-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cat-card-img { height: 100px; font-size: 2rem; }
+  .cat-card-body { padding: 10px 12px; }
+  .cat-card-body h3 { font-size: 1rem; }
+  .page-header h1 { font-size: 1.5rem; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero p { font-size: 1rem; }
+  .pros-cons { grid-template-columns: 1fr; }
+  .comparison-table { font-size: 0.75rem; }
+  .comparison-table th, .comparison-table td { padding: 8px 10px; }
+  .product-rank { font-size: 2rem; }
+  .at-a-glance-table { font-size: 0.78rem; }
+  .at-a-glance-table th, .at-a-glance-table td { padding: 6px 8px; }
+}
+
+/* --- Print --- */
+@media print {
+  .site-header, .site-footer, .btn-buy, .cta-banner { display: none; }
+}
