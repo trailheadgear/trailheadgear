@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=600,initial-scale=1.0"><title>Pin</title>
+<style>
+body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#666}
+.pin{width:600px;height:900px;overflow:hidden;font-family:'Segoe UI',system-ui,sans-serif;display:flex;flex-direction:column}
+.hero{flex:1;position:relative;overflow:hidden;background:url('https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?w=600&q=85') center/cover no-repeat}
+.gradient{position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.hero-text{position:absolute;bottom:40px;left:36px;right:36px;z-index:2}
+.hero-text .tag{display:inline-block;background:#F48120;color:#fff;padding:6px 16px;border-radius:4px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.hero-text h1{color:#fff;font-size:38px;font-weight:900;line-height:1.1;margin:0;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.panel{background:#fff;padding:28px 36px}
+.panel .row{display:flex;gap:12px;margin-bottom:14px}
+.panel .row:last-child{margin-bottom:0}
+.chip{background:#f5f7fa;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;color:#333;display:flex;align-items:center;gap:8px}
+.chip .num{color:#F48120;font-size:20px;font-weight:900}
+.cta{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:16px;border-top:1px solid #eee}
+.cta-text{font-size:15px;color:#555}
+.btn{background:#FFD814;color:#0F1111;padding:12px 28px;border-radius:24px;font-weight:700;font-size:16px;text-decoration:none;border:1px solid #FCD200}
+.logo{position:absolute;top:28px;left:36px;color:#fff;font-size:20px;font-weight:800;z-index:3;text-shadow:0 1px 6px rgba(0,0,0,.3)}
+</style></head>
+<body>
+<div class="pin">
+<div class="hero"><div class="gradient"></div><div class="logo">Trailhead Gear</div><div class="hero-text"><div class="tag">Budget Guide</div><h1>Complete Camping Gear Setup Under $200</h1></div></div>
+<div class="panel">
+<div class="row"><div class="chip"><span class="num">⛺</span> Tent: Coleman Sundome 2</div><div class="chip"><span class="num">🛌</span> Bag: Teton Celsius XXL</div></div>
+<div class="row"><div class="chip"><span class="num">🛏️</span> Pad: Therm-a-Rest Z Lite</div><div class="chip"><span class="num">🔥</span> Stove: BRS-3000T</div></div>
+<div class="cta"><span class="cta-text">All 6 items tested. Total: $232</span><span class="btn">See the Full List →</span></div>
+</div>
+</div>
+</body></html>
